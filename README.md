@@ -7,7 +7,7 @@ This plugin uses the [pydexcom plugin](https://github.com/gagebenne/pydexcom) wr
 * open a command prompt on your domoticz machine. 
 * go to the domoticz installation folder.
 * open the plugin folder.
-* run  `git pull https://github.com/MSe-5-14/Domoticz-Dexcom-API.git Dexcom`
+* run  `git clone https://github.com/MSe-5-14/Domoticz-Dexcom-API.git Dexcom`
 * open the domoticz web interface
 * go to hardware and find the Dexcom Share API plugin
 
