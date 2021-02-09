@@ -79,15 +79,19 @@ class BasePlugin:
             dexcom = Dexcom(Parameters["Username"], Parameters["Password"])
 
         bg = dexcom.get_current_glucose_reading()
+
+        if hasattr(bg, 'value'):
         
-        if (Parameters["Mode2"] == "mg_dl"):
-            Measurement = bg.value
-        else:
-            Measurement = bg.mmol_l
+            if (Parameters["Mode2"] == "mg_dl"):
+                Measurement = bg.value
+            else:
+                Measurement = bg.mmol_l
             
-        if Measurement is not None and Measurement != 0:
-            UpdateDevice(1, Measurement, str(Measurement), 0)
-            UpdateDevice(2, bg.trend, str(bg.trend_description), 0)
+            if type(Measurement) == int:
+                UpdateDevice(1, Measurement, str(Measurement), 0)
+                UpdateDevice(2, bg.trend, str(bg.trend_description), 0)
+        else:
+            UpdateDevice(2, 0, "No Data", 0)
     
     def onStop(self):
         Domoticz.Log("onStop called")
