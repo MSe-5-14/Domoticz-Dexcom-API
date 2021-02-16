@@ -89,7 +89,7 @@ class BasePlugin:
             
             if type(Measurement) == int:
                 UpdateDevice(1, Measurement, str(Measurement), 0)
-                UpdateDevice(2, bg.trend, str(bg.trend_description), 0)
+                UpdateDevice(2, bg.trend, str(bg.trend) + ';' + str(bg.trend_description) + ';' + str(bg.trend_arrow), 0)
         else:
             UpdateDevice(2, 0, "No Data", 0)
     
